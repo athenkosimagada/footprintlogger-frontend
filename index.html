@@ -10,7 +10,6 @@
     <title>Landing Page: Footprint Logger</title>
     <link rel="stylesheet" href="reboot.css" />
     <link rel="stylesheet" href="app.css" />
-
   </head>
   <body>
     <header>HEADER CONTENT</header>
@@ -18,8 +17,8 @@
     <main>
       <section>HERO CONTENT</section>
       <section class="log-activity">
-        <form class="log-activity__form" action="">
-          <h3>Log Activity</h2>
+        <form class="log-activity__form">
+          <h3>Log Activity</h3>
           <div class="form-group">
             <label class="form-label" for="activity-name">Activity Name</label>
             <input
@@ -52,7 +51,12 @@
 
           <div class="form-group">
             <label class="form-label" for="quantity-unit">Unit</label>
-            <select class="form-select" id="quantity-unit" name="quantity-unit" required>
+            <select
+              class="form-select"
+              id="quantity-unit"
+              name="quantity-unit"
+              required
+            >
               <option value="" disabled selected>Select unit</option>
               <option value="minutes">Minutes</option>
               <option value="hours">Hours</option>
@@ -108,6 +112,7 @@
 
     <footer>FOOTER CONTENT</footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
