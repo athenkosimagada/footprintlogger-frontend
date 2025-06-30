@@ -1,45 +1,269 @@
+/**
+ * CSS Variables
+ * This file defines the CSS variables used throughout the application.
+ * It includes font families, sizes, weights, colors, and other design tokens.
+ */
 :root {
-    --primary-color: #2d7a5f;
-    --secondary-color: #f5f5f5;
-    --accent-color: #e67e22;
+    /* Font Families */
+    --font-family-base: 'system-ui', sans-serif;
+    --font-family-heading: 'Poppins', sans-serif;
+    --font-family-mono: 'Courier New', monospace;
+
+    /* Font Sizes */
+    --font-size-base: 1rem; /* 16px */
+    --font-size-lg: 1.25rem; /* 20px */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-xs: 0.75rem; /* 12px */
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-bolder: 900;
+
+
+    /* Base Colors */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-black: hsl(0, 0%, 0%);
+
+    --clr-grey-100: hsl(0, 0%, 98%);
+    --clr-grey-200: hsl(0, 0%, 95%);
+    --clr-grey-300: hsl(0, 0%, 90%);
+    --clr-grey-400: hsl(0, 0%, 80%);
+    --clr-grey-500: hsl(0, 0%, 70%);
+    --clr-grey-600: hsl(0, 0%, 60%);
+    --clr-grey-700: hsl(0, 0%, 50%);
+    --clr-grey-800: hsl(0, 0%, 40%);
+    --clr-grey-900: hsl(0, 0%, 30%);
+
+    --clr-dark-100: hsl(0, 0%, 10%);
+    --clr-dark-200: hsl(0, 0%, 15%);
+    --clr-dark-300: hsl(0, 0%, 20%);
+    --clr-dark-400: hsl(0, 0%, 25%);
+    --clr-dark-500: hsl(0, 0%, 35%);
+    --clr-dark-600: hsl(0, 0%, 45%);
+    --clr-dark-700: hsl(0, 0%, 55%);
+    --clr-dark-800: hsl(0, 0%, 70%);
+    --clr-dark-900: hsl(0, 0%, 85%);
+
+
+    --clr-green-100: hsl(145, 60%, 95%);
+    --clr-green-200: hsl(145, 60%, 85%);
+    --clr-green-300: hsl(145, 60%, 75%);
+    --clr-green-400: hsl(145, 60%, 65%);
+    --clr-green-500: hsl(145, 60%, 55%);
+    --clr-green-600: hsl(145, 60%, 45%);
+    --clr-green-700: hsl(145, 60%, 35%);
+    --clr-green-800: hsl(145, 60%, 25%);
+    --clr-green-900: hsl(145, 60%, 15%);
+
+    --clr-red-100: hsl(0, 100%, 95%);
+    --clr-red-200: hsl(0, 100%, 85%);
+    --clr-red-300: hsl(0, 100%, 75%);
+    --clr-red-400: hsl(0, 100%, 65%);
+    --clr-red-500: hsl(0, 100%, 55%);
+    --clr-red-600: hsl(0, 100%, 45%);
+    --clr-red-700: hsl(0, 100%, 35%);
+    --clr-red-800: hsl(0, 100%, 25%);
+    --clr-red-900: hsl(0, 100%, 15%);
+
+    --clr-yellow-100: hsl(50, 100%, 95%);
+    --clr-yellow-200: hsl(50, 100%, 85%);
+    --clr-yellow-300: hsl(50, 100%, 75%);
+    --clr-yellow-400: hsl(50, 100%, 65%);
+    --clr-yellow-500: hsl(50, 100%, 55%);
+    --clr-yellow-600: hsl(50, 100%, 45%);
+    --clr-yellow-700: hsl(50, 100%, 35%);
+    --clr-yellow-800: hsl(50, 100%, 25%);
+    --clr-yellow-900: hsl(50, 100%, 15%);
+
+    --clr-orange-100: hsl(30, 100%, 95%);
+    --clr-orange-200: hsl(30, 100%, 85%);
+    --clr-orange-300: hsl(30, 100%, 75%);
+    --clr-orange-400: hsl(30, 100%, 65%);
+    --clr-orange-500: hsl(30, 100%, 55%);
+    --clr-orange-600: hsl(30, 100%, 45%);
+    --clr-orange-700: hsl(30, 100%, 35%);
+    --clr-orange-800: hsl(30, 100%, 25%);
+    --clr-orange-900: hsl(30, 100%, 15%);
+
+    --clr-blue-100: hsl(210, 100%, 95%);
+    --clr-blue-200: hsl(210, 100%, 85%);
+    --clr-blue-300: hsl(210, 100%, 75%);
+    --clr-blue-400: hsl(210, 100%, 65%);
+    --clr-blue-500: hsl(210, 100%, 55%);
+    --clr-blue-600: hsl(210, 100%, 45%);
+    --clr-blue-700: hsl(210, 100%, 35%);
+    --clr-blue-800: hsl(210, 100%, 25%);
+    --clr-blue-900: hsl(210, 100%, 15%);
+
+    /* Light Theme Colors */
+    --clr-primary: var(--clr-green-500);
+    --clr-secondary: var(--clr-grey-500);
+    --clr-accent: var(--clr-green-600);
+    --clr-error: var(--clr-red-500);
+    --clr-success: var(--clr-green-500);
+    --clr-warning: var(--clr-yellow-500);
+    --clr-info: var(--clr-orange-500);
+    --clr-link: var(--clr-green-500);
+
+    --clr-body-bg: var(--clr-grey-100);
+
+    --clr-text: var(--clr-dark-300);
+    --clr-heading: var(--clr-dark-300);
+    
+    --clr-btn-primary-bg: var(--clr-green-500);
+    --clr-btn-primary-text: var(--clr-white);
+    --clr-btn-primary-hover-bg: var(--clr-green-600);
+
+    --clr-btn-toggle-bg: transparent;
+    --clr-btn-toggle-text: var(--clr-black);
+    --clr-btn-toggle-border: var(--clr-dark-600);
+
+    --clr-input-bg: var(--clr-white);
+    --clr-input-border: var(--clr-grey-300);
+    --clr-input-focus-border: var(--clr-dark-500);
+    --clr-input-placeholder: var(--clr-grey-500);
+    --clr-input-text: var(--clr-dark-300);
+    --clr-input-label: var(--clr-dark-300);
+    --clr-input-disabled-bg: var(--clr-grey-200);
+    --clr-input-disabled-text: var(--clr-grey-500);
+    --clr-input-disabled-border: var(--clr-grey-300);
 }
 
 /**
- * Reset CSS
- * This is a simple reset to ensure consistent styling across browsers.
+ * Global CSS Styles
+ * This section contains the global styles for the application.
  */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    background-color: var(--clr-body-bg);
+    color: var(--clr-text);
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
-    font-family: inherit;
-    background: #fff;
-    color: #222;
+h1, 
+h2, 
+h3 {
+    color: var(--clr-heading);
+    line-height: 1.1;
 }
-
-ul, ol {
-    list-style: none;
+    
+p {
+    color: var(--clr-text);
 }
-
+    
 a {
-    text-decoration: none;
-    color: inherit;
+    color: var(--clr-link);
+    text-decoration: underline;
+}
+    
+a:hover {
+    opacity: 0.8;
+}
+    
+button {
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-semibold);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+    
+.btn-primary {
+    background-color: var(--clr-btn-primary-bg);
+    color: var(--clr-btn-primary-text);
+    
+    transition: background-color 0.3s ease;
 }
 
-img, button {
-    border: none;
+.btn-primary:hover {
+    background-color: var(--clr-btn-primary-hover-bg);
+}
+
+.btn-toggle {
+    background-color: var(--clr-btn-toggle-bg);
+    color: var(--clr-btn-toggle-text);
+    border: 1px solid var(--clr-btn-toggle-border);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    padding: 0.5rem;
+    border: 1px solid var(--clr-input-border);
+    border-radius: 0.25rem;
+    background-color: transparent;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: var(--clr-input-focus-border);
+    box-shadow: 0 0 0 2px rgba(0, 128, 255, 0.2);
+    color: var(--clr-input-text);
     outline: none;
 }
 
-body {
-    line-height: 1.5;
+.form-input::placeholder,
+.form-select::placeholder,
+.form-textarea::placeholder {
+    color: var(--clr-input-placeholder);
 }
 
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled {
+    background-color: var(--clr-input-disabled-bg);
+    color: var(--clr-input-disabled-text);
+    border-color: var(--clr-input-disabled-border);
+}
 
+.form-select option {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--clr-input-bg);
+    color: var(--clr-input-text);
+    cursor: pointer;
+}
+
+/**
+ * Log Activity Styles
+ * This section contains styles specific to the log activity section.
+ */
+
+.log-activity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.log-activity__form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--clr-white);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--clr-grey-300);
+}
+
+.form-input__activity-name > div {
+    padding: 0.5rem;
+    border: 1px solid var(--clr-input-border);
+    border-radius: 0.25rem;
+    background-color: transparent;
+}   

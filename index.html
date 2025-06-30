@@ -10,11 +10,101 @@
     <title>Landing Page: Footprint Logger</title>
     <link rel="stylesheet" href="reboot.css" />
     <link rel="stylesheet" href="app.css" />
+
   </head>
   <body>
     <header>HEADER CONTENT</header>
 
-    <main>MAIN CONTENT</main>
+    <main>
+      <section>HERO CONTENT</section>
+      <section class="log-activity">
+        <form class="log-activity__form" action="">
+          <h3>Log Activity</h2>
+          <div class="form-group">
+            <label class="form-label" for="activity-name">Activity Name</label>
+            <input
+              class="form-input"
+              list="activity-suggestions"
+              type="text"
+              id="activity-name"
+              name="activity-name"
+              placeholder="e.g., Shower, Drive"
+              required
+            />
+            <datalist id="activity-suggestions">
+              <!-- Options will be populated by JavaScript -->
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quantity">Quantity</label>
+            <input
+              class="form-input"
+              type="number"
+              id="quantity"
+              name="quantity"
+              placeholder="e.g., 30 (minutes), 10 (km)"
+              min="0"
+              step="0.1"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quantity-unit">Unit</label>
+            <select class="form-select" id="quantity-unit" name="quantity-unit" required>
+              <option value="" disabled selected>Select unit</option>
+              <option value="minutes">Minutes</option>
+              <option value="hours">Hours</option>
+              <option value="kilometers">Kilometers</option>
+              <option value="kWh">Kilowatt-hours (kWh)</option>
+              <option value="liters">Liters</option>
+              <option value="meals">Meals</option>
+              <option value="kg">Kilograms</option>
+              <option value="loads">Loads</option>
+              <option value="items">Items</option>
+              <option value="trips">Trips</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="category">Category</label>
+            <select class="form-select" id="category" name="category" required>
+              <option value="" disabled selected>Select category</option>
+              <option value="transportation">Transportation</option>
+              <option value="transport">Transport</option>
+              <option value="energy">Energy</option>
+              <option value="water">Water</option>
+              <option value="waste">Waste</option>
+              <option value="food">Food</option>
+              <option value="home">Home & Appliances</option>
+              <option value="lifestyle">Lifestyle & Shopping</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button class="btn-primary" type="submit">
+            <span>Log Activity</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-right"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+              />
+            </svg>
+          </button>
+        </form>
+      </section>
+      <section>ACTIVITY LOG</section>
+      <section>FOOTPRINT SUMMARY</section>
+    </main>
 
     <footer>FOOTER CONTENT</footer>
 
