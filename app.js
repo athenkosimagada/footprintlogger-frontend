@@ -75,12 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       saveActivityData(activityEntry);
 
+      updateChart();
+      displayTable(currentPage);
+
       activityForm.reset();
       populateActivitySuggestions();
     });
 
     displayTable(currentPage);
-    addChart();
+    updateChart();
   }
 
   if (getCo2Emissions().length === 0) {
@@ -210,7 +213,7 @@ function updatePagination(currentPage) {
   };
 }
 
-function addChart() {
+function updateChart() {
   const activities = getActivities();
   const categoryTotals = {};
 
@@ -228,9 +231,13 @@ function addChart() {
   const labels = Object.keys(categoryTotals);
   const data = Object.values(categoryTotals);
 
+  if (window.activityChart) {
+    window.activityChart.destroy();
+  }
+
   const ctx = document.getElementById("co2-bar-graph").getContext("2d");
 
-  new Chart(ctx, {
+  window.activityChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels: labels,
