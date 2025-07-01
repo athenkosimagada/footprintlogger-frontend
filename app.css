@@ -279,6 +279,56 @@ button {
 }
 
 /**
+ * Header Styles
+ * This section contains styles for the header section.
+ */
+
+.header {
+    padding: 0.75rem 0 0.5rem 0;
+}
+
+.header__logo {
+    font-weight: var(--font-weight-bold);
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+}
+
+.header__menu-list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header__menu-item {
+    list-style: none;
+}
+
+.header__menu-item a {
+    text-decoration: none;
+    color: var(--clr-text);
+
+    transition: color 0.3s ease;
+}
+
+.header__menu-item a:hover {
+    text-decoration: underline;
+}
+
+/**
  * Log Activity Styles
  * This section contains styles specific to the log activity section.
  */
