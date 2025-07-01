@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     displayTable(currentPage);
+    addChart();
   }
 
   if (getCo2Emissions().length === 0) {
@@ -207,4 +208,59 @@ function updatePagination(currentPage) {
       displayTable(currentPage);
     }
   };
+}
+
+function addChart() {
+  const activities = getActivities();
+  const categoryTotals = {};
+
+  activities.forEach((activity) => {
+    const category = activity.category;
+    const co2 = activity.carbonFootprint;
+
+    if (categoryTotals[category]) {
+      categoryTotals[category] += co2;
+    } else {
+      categoryTotals[category] = co2;
+    }
+  });
+
+  const labels = Object.keys(categoryTotals);
+  const data = Object.values(categoryTotals);
+
+  const ctx = document.getElementById("co2-bar-graph").getContext("2d");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Total CO₂ Emissions (kg)",
+          data: data,
+          backgroundColor: "rgba(75, 192, 192, 0.5)",
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "CO₂ (kg)",
+          },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Category",
+          },
+        },
+      },
+    },
+  });
 }

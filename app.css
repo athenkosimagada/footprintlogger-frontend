@@ -363,3 +363,15 @@ button {
     display: flex;
     gap: 2rem;
 }
+
+/**
+ * Chart Styles
+ * This section contains styles for the chart elements.
+ */
+
+.activities__chart {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 80px;
+}
