@@ -67,7 +67,39 @@
     </header>
 
     <main>
-      <section>HERO CONTENT</section>
+      <section class="hero">
+        <div class="hero__content">
+          <div class="hero__text">
+            <h1 class="hero__title">Track your carbon footprint</h1>
+            <p class="hero__description">Monitor your daily activities and their CO2 emissions</p>
+          </div>
+          <button class="btn-primary">
+            <span>Start Tracking Now</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-right"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.742 8.5H1.5v-1h10.242l-2.121-2.121  .707-.707 4 4-4 4-.707-.707 2.121-2.121z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="hero__image-container">
+          <img
+            class="hero__image"
+            loading="lazy"
+            src="hero.png"
+            alt="Footprint Logger Hero Image"
+          />
+      </section>
+
       <section class="log-activity">
         <form class="log-activity__form">
           <h3>Log Activity</h3>
@@ -158,6 +190,7 @@
           </button>
         </form>
       </section>
+
       <section class="activities">
         <h3>Your Activities</h3>
 
@@ -195,6 +228,7 @@
           </div>
         </div>
       </section>
+
       <section class="activities__chart">
         <h3>CO2 Bar Graph</h3>
 

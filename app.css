@@ -284,7 +284,7 @@ button {
  */
 
 .header {
-    padding: 0.75rem 0 0.5rem 0;
+    padding: 1.75rem 0 0.5rem 0;
 }
 
 .header__logo {
@@ -329,11 +329,54 @@ button {
 }
 
 /**
+ * Hero Section Styles
+ * This section contains styles for the hero section.
+ */
+
+.hero {
+    height: calc(100vh - 80px);
+    max-height: 768px;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+}
+
+.hero__title {
+    font-size: 3.5rem;
+}
+
+.hero__description {
+    font-size: 1.75rem;
+}
+
+.hero__content button {
+    max-width: max-content;
+}
+
+.hero__image {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+}
+
+/**
  * Log Activity Styles
  * This section contains styles specific to the log activity section.
  */
 
 .log-activity {
+    margin-top: 80px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
