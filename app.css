@@ -138,6 +138,9 @@
 
     --clr-pagination-btn-bg: var(--clr-grey-300);
     --clr-pagination-btn-text: var(--clr-black);
+
+    --clr-help-bg: var(--clr-green-200);
+    --clr-help-text: var(--clr-dark-300);
 }
 
 /**
@@ -374,4 +377,21 @@ button {
     flex-direction: column;
     gap: 2rem;
     margin-top: 80px;
+}
+
+
+/**
+ * Help Styles
+ * This section contains styles for the help section.
+ */
+
+.help {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--clr-help-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
