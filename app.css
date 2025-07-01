@@ -130,6 +130,14 @@
     --clr-input-disabled-bg: var(--clr-grey-200);
     --clr-input-disabled-text: var(--clr-grey-500);
     --clr-input-disabled-border: var(--clr-grey-300);
+
+    --clr-table-header-bg: var(--clr-dark-100);
+    --clr-table-header-text: var(--clr-white);
+    --clr-table-row-bg: var(--clr-grey-300);
+    --clr-table-row-text: var(--clr-dark-300);
+
+    --clr-pagination-btn-bg: var(--clr-grey-300);
+    --clr-pagination-btn-text: var(--clr-black);
 }
 
 /**
@@ -143,6 +151,12 @@ body {
     line-height: 1.5;
     background-color: var(--clr-body-bg);
     color: var(--clr-text);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 h1, 
@@ -267,3 +281,85 @@ button {
     border-radius: 0.25rem;
     background-color: transparent;
 }   
+
+
+/**]
+ * Activities List Styles
+ * This section contains styles for the activities .
+ */
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-top: 80px;
+}
+
+.activities__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.activities__container .form-select {
+    width: max-content;
+}
+
+.activities__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activities__table {
+    border-collapse: collapse;
+}
+
+.activities__table th,
+.activities__table td {
+    padding: 0.75rem;
+}
+
+.activities__table tbody > tr:nth-child(odd) {
+    background-color: var(--clr-table-row-bg);
+}
+
+.activities__table thead > tr > th:first-child {
+    text-align: center;
+}
+
+.activities__table tbody > tr > td:first-child {
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+}
+
+.activities__table th {
+    background-color: var(--clr-table-header-bg);
+    color: var(--clr-table-header-text);
+    font-weight: var(--font-weight-semibold);
+}
+
+.activities__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activities__pagination-info {
+    font-size: var(--font-size-sm);
+}
+
+.activities__pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.activities__pagination button {
+    border-radius: 60px;
+}
+
+#activities__pagination {
+    display: flex;
+    gap: 2rem;
+}

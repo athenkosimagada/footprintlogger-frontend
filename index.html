@@ -106,7 +106,43 @@
           </button>
         </form>
       </section>
-      <section>ACTIVITY LOG</section>
+      <section class="activities">
+        <h3>Your Activities</h3>
+
+        <div class="activities__container">
+          <select class="form-select" name="category" id="category-filter">
+            <option value="all">All Categories</option>
+          </select>
+
+          <div class="activities__list">
+            <table class="activities__table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Activity</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="activities__list">
+                <!-- Activity rows will be populated by JavaScript -->
+              </tbody>
+            </table>
+            <div class="activities__footer">
+              <span class="activities__pagination-info"> Showing 1 of 20</span>
+              <div class="activities__pagination">
+                <button class="btn-secondary" id="previous-page">
+                  Previous
+                </button>
+                <div id="activities__pagination"></div>
+                <button class="btn-secondary" id="next-page">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section>FOOTPRINT SUMMARY</section>
     </main>
 

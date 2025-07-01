@@ -1,6 +1,9 @@
 const activityForm = document.querySelector(".log-activity__form");
 const activityList = document.getElementById("activity-list");
 
+const rowsPerPage = 5;
+let currentPage = 1;
+
 document.addEventListener("DOMContentLoaded", () => {
   function initializeApp() {
     populateActivitySuggestions();
@@ -75,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
       activityForm.reset();
       populateActivitySuggestions();
     });
+
+    displayTable(currentPage);
   }
 
   if (getCo2Emissions().length === 0) {
@@ -133,4 +138,73 @@ function populateActivitySuggestions() {
       activitySuggestions.appendChild(option);
     });
   }
+}
+
+function getActivities() {
+  const activities = JSON.parse(localStorage.getItem("activities")) || [];
+  return activities.sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
+}
+
+function displayTable(page) {
+  const tableBody = document.getElementById("activities__list");
+  const startIndex = (page - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+  const slicedData = getActivities().slice(startIndex, endIndex);
+
+  tableBody.innerHTML = "";
+
+  if (slicedData.length === 0) {
+    const row = tableBody.insertRow();
+    const cell = row.insertCell(0);
+    cell.colSpan = 5;
+    cell.innerHTML = "No activities logged yet.";
+    return;
+  }
+
+  slicedData.forEach((item, index) => {
+    const row = tableBody.insertRow();
+    const number = row.insertCell(0);
+    const activityName = row.insertCell(1);
+    const quantityCell = row.insertCell(2);
+    const unitCell = row.insertCell(3);
+    const categoryCell = row.insertCell(4);
+    const dateCell = row.insertCell(5);
+
+    number.innerHTML = index + 1 + startIndex;
+    activityName.innerHTML = item.activityName;
+    quantityCell.innerHTML = item.quantity;
+    unitCell.innerHTML = item.quantityUnit;
+    categoryCell.innerHTML = item.category;
+    dateCell.innerHTML = item.date;
+  });
+
+  updatePagination(page);
+}
+
+function updatePagination(currentPage) {
+  const paginationPreviousBtn = document.getElementById("previous-page");
+  const paginationNextBtn = document.getElementById("next-page");
+  const paginationInfo = document.querySelector(".activities__pagination-info");
+
+  const totalActivities = getActivities().length;
+  const totalPages = Math.ceil(totalActivities / rowsPerPage);
+  paginationInfo.innerHTML = `Showing ${currentPage} of ${totalPages}`;
+
+  paginationPreviousBtn.disabled = currentPage === 1;
+  paginationNextBtn.disabled = currentPage === totalPages;
+  paginationPreviousBtn.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayTable(currentPage);
+    }
+  };
+
+  paginationNextBtn.onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayTable(currentPage);
+    }
+  };
 }
