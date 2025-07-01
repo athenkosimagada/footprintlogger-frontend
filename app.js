@@ -243,10 +243,10 @@ function updateChart() {
       labels: labels,
       datasets: [
         {
-          label: "Total CO₂ Emissions (kg)",
+          label: "Total CO₂ Emissions per Category (kg)",
           data: data,
-          backgroundColor: "rgba(75, 192, 192, 0.5)",
-          borderColor: "rgba(75, 192, 192, 1)",
+          backgroundColor: "hsl(145, 60%, 55%)",
+          borderColor: "transparent",
           borderWidth: 1,
         },
       ],
