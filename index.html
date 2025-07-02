@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <button class="btn__back-to-top" id="btn__back-to-top">
+    <button onclick="scrollToTop()" class="btn__back-to-top" title="Back to top" id="btn__back-to-top">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -64,10 +64,7 @@
           </ul>
         </div>
       </nav>
-    </header>
-
-    <main>
-      <section class="hero">
+            <section class="hero">
         <div class="hero__content">
           <div class="hero__text">
             <h1 class="hero__title">Track your carbon footprint</h1>
@@ -99,7 +96,9 @@
             alt="Footprint Logger Hero Image"
           />
       </section>
+    </header>
 
+    <main>
       <section class="log-activity" id="activity-log">
         <form class="log-activity__form">
           <h3>Log Activity</h3>

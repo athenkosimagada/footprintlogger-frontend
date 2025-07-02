@@ -140,7 +140,9 @@
   --clr-help-bg: var(--clr-green-200);
   --clr-help-text: var(--clr-dark-300);
 
-  --clr-footer-link: var(--clr-dark-300);
+  --clr-footer-link: var(--clr-white);
+  --clr-footer-bg: var(--clr-dark-100);
+  --clr-footer-text: var(--clr-white);
 }
 
 /**
@@ -195,13 +197,15 @@ button {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
+  z-index: 99;
   background-color: var(--clr-btn-primary-bg);
   color: var(--clr-btn-primary-text);
   border: none;
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
-  display: flex;
+
+  display: none;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -282,7 +286,16 @@ button {
  */
 
 .header {
+  display: flex;
+  flex-direction: column;
   padding: 1.75rem 0 0.5rem 0;
+  height: 100vh;
+  max-height: 768px;
+
+  background-image: url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
 }
 
 .header__logo {
@@ -295,6 +308,7 @@ button {
   align-items: center;
   gap: 1rem;
 
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -332,14 +346,14 @@ button {
  */
 
 .hero {
-  height: calc(100vh - 80px);
-  max-height: 768px;
+  flex: 1;
   max-width: 1024px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  padding: 2rem;
 }
 
 .hero__content {
@@ -515,6 +529,9 @@ button {
 
 .footer {
   margin-top: 80px;
+  padding: 2rem;
+  background-color: var(--clr-footer-bg);
+  color: var(--clr-footer-text);
 }
 
 .footer__container {
@@ -568,4 +585,58 @@ button {
 
 .footer__social-link:hover {
   opacity: 0.8;
+}
+
+.footer__copy {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--clr-footer-text);
+}
+
+/**
+ * Media Queries
+ * This section contains media queries for responsive design.
+ */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+    height: auto;
+    max-height: none;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__content {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .log-activity__form {
+    width: 100%;
+  }
+
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer__content {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4rem;
+  }
+
+  .footer__logo {
+    margin-bottom: 1rem;
+  }
+  .footer__nav,
+  .footer__social {
+    width: 100%;
+    text-align: center;
+  }
 }

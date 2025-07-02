@@ -1,8 +1,13 @@
+let backToTopButton = document.getElementById("btn__back-to-top");
 const activityForm = document.querySelector(".log-activity__form");
 const activityList = document.getElementById("activity-list");
 
 const rowsPerPage = 5;
 let currentPage = 1;
+
+window.onscroll = function () {
+  scrollToTop();
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   function initializeApp() {
@@ -105,6 +110,24 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeApp();
   }
 });
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  window.onscroll = function () {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      backToTopButton.style.display = "flex";
+    } else {
+      backToTopButton.style.display = "none";
+    }
+  };
+}
 
 function getCo2Emissions() {
   const emissions = localStorage.getItem("co2Emissions");
