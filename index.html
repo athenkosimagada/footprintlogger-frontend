@@ -62,13 +62,28 @@
             <li class="header__menu-item"><a href="#chart">CO₂ Chart</a></li>
             <li class="header__menu-item"><a href="#help">Help</a></li>
           </ul>
+          <button class="header__menu-toggle" id="menu-toggle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-list"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </button>
         </div>
       </nav>
             <section class="hero">
         <div class="hero__content">
           <div class="hero__text">
             <h1 class="hero__title">Track your carbon footprint</h1>
-            <p class="hero__description">Monitor your daily activities and their CO2 emissions</p>
+            <p class="hero__description" style="color: var(--clr-white)">Monitor your daily activities and their CO2 emissions</p>
           </div>
           <button class="btn-primary">
             <span>Start Tracking Now</span>
@@ -204,8 +219,6 @@
                 <tr>
                   <th>#</th>
                   <th>Activity</th>
-                  <th>Quantity</th>
-                  <th>Unit</th>
                   <th>Category</th>
                   <th>Date</th>
                 </tr>

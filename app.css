@@ -315,6 +315,7 @@ button {
 }
 
 .header__menu {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -338,6 +339,24 @@ button {
 
 .header__menu-item a:hover {
   text-decoration: underline;
+}
+
+.header__menu-toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.header__menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--clr-text);
+  transition: fill 0.3s ease;
+}
+
+.header__menu-toggle:hover svg {
+  fill: var(--clr-link);
 }
 
 /**
@@ -603,6 +622,30 @@ button {
     padding: 1rem;
     height: auto;
     max-height: none;
+  }
+
+  .header__menu-toggle {
+    display: block;
+  }
+
+  .header__menu-list {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content;
+    background-color: var(--clr-white);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+
+  .header__menu-list.active {
+    display: flex;
   }
 
   .hero {

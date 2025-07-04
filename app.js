@@ -1,6 +1,8 @@
 let backToTopButton = document.getElementById("btn__back-to-top");
 const activityForm = document.querySelector(".log-activity__form");
 const activityList = document.getElementById("activity-list");
+const categoryFilter = document.getElementById("category-filter");
+const menuToggle = document.getElementById("menu-toggle");
 
 const rowsPerPage = 5;
 let currentPage = 1;
@@ -12,10 +14,16 @@ window.onscroll = function () {
 document.addEventListener("DOMContentLoaded", () => {
   function initializeApp() {
     populateActivitySuggestions();
+    populateCategoryFilter();
 
     const fuse = new Fuse(getCo2Emissions(), {
       keys: ["activityName"],
       threshold: 0.3,
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const menuList = document.querySelector(".header__menu-list");
+      menuList.classList.toggle("active");
     });
 
     activityForm.addEventListener("submit", (event) => {
@@ -24,8 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(activityForm);
 
       const activityData = Object.fromEntries(formData);
-
-      console.log("Activity Data:", activityData);
 
       let carbonFootprint = 0;
       let emissionFactor = 0;
@@ -65,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const quantity = parseFloat(activityData["quantity"]);
       const quantityUnit = activityData["quantity-unit"].trim();
-      const category = activityData["category"];
+      const category = activityData["category"].trim();
       carbonFootprint = emissionFactor * quantity;
       const activityDate = new Date().toLocaleDateString();
       const activityTime = new Date().toLocaleTimeString();
@@ -85,6 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       activityForm.reset();
       populateActivitySuggestions();
+    });
+
+    categoryFilter.addEventListener("change", (event) => {
+      const selectedCategory = event.target.value.trim();
+      displayTable(1, selectedCategory);
     });
 
     displayTable(currentPage);
@@ -167,18 +178,37 @@ function populateActivitySuggestions() {
   }
 }
 
-function getActivities() {
-  const activities = JSON.parse(localStorage.getItem("activities")) || [];
-  return activities.sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
+function populateCategoryFilter() {
+  const categoryFilter = document.getElementById("category-filter");
+  const activities = getActivities();
+
+  const categories = new Set(activities.map((activity) => activity.category));
+
+  categoryFilter.innerHTML = '<option value="">all categories</option>';
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.appendChild(option);
   });
 }
 
-function displayTable(page) {
+function getActivities(filterCategory = "") {
+  const activities = JSON.parse(localStorage.getItem("activities")) || [];
+  return activities
+    .filter((activity) =>
+      filterCategory ? activity.category === filterCategory : true
+    )
+    .sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+}
+
+function displayTable(page, filterCategory = "") {
   const tableBody = document.getElementById("activities__list");
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const slicedData = getActivities().slice(startIndex, endIndex);
+  const slicedData = getActivities(filterCategory).slice(startIndex, endIndex);
 
   tableBody.innerHTML = "";
 
@@ -194,15 +224,11 @@ function displayTable(page) {
     const row = tableBody.insertRow();
     const number = row.insertCell(0);
     const activityName = row.insertCell(1);
-    const quantityCell = row.insertCell(2);
-    const unitCell = row.insertCell(3);
-    const categoryCell = row.insertCell(4);
-    const dateCell = row.insertCell(5);
+    const categoryCell = row.insertCell(2);
+    const dateCell = row.insertCell(3);
 
     number.innerHTML = index + 1 + startIndex;
-    activityName.innerHTML = item.activityName;
-    quantityCell.innerHTML = item.quantity;
-    unitCell.innerHTML = item.quantityUnit;
+    activityName.innerHTML = `${item.activityName} (${item.quantity} ${item.quantityUnit})`;
     categoryCell.innerHTML = item.category;
     dateCell.innerHTML = item.date;
   });
