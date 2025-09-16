@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/css/reboot.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login">
+        <div class="login__box">
+          <h2 class="login__title">Login</h2>
+          <p class="login__description">
+            Please enter your credentials to access your account.
+          </p>
+
+          <p class="login__error" id="login__error"></p>
+          <form class="login__form" onsubmit="login(event)">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="eg. janesmith@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                class="form-input"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="**********"
+                required
+              />
+            </div>
+            <button class="btn btn-primary" type="submit">Login</button>
+          </form>
+
+          <p class="login__signup">
+            Don't have an account?
+            <a href="/auth/register.html">Register here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+  </body>
+</html>

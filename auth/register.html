@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+
+    <link rel="stylesheet" href="/css/reboot.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="register">
+        <div class="register__box">
+          <h2 class="register__title">Register</h2>
+          <p class="register__description">
+            Please fill in the form to create an account.
+          </p>
+
+          <p class="register__error" id="register__error"></p>
+          <form class="register__form" onsubmit="register(event)">
+            <div class="form-group">
+              <label for="firstName"
+                >First Name:<span class="required">*</span></label
+              >
+              <input
+                class="form-input"
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="eg. John"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName"
+                >Last Name:<span class="required">*</span></label
+              >
+              <input
+                class="form-input"
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="eg. Smith"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:<span class="required">*</span></label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="eg. janesmith@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password"
+                >Password:<span class="required">*</span></label
+              >
+              <input
+                class="form-input"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="**********"
+                required
+              />
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+          </form>
+
+          <p class="login__signup">
+            Already have an account?
+            <a href="/auth/login.html">Login here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+  </body>
+</html>

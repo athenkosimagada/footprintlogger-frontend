@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log Activity</title>
+
+    <script>
+      const token = localStorage.getItem("token");
+      if (!token) {
+        window.location.href = "/auth/login.html";
+      }
+    </script>
+
+    <link rel="stylesheet" href="/css/reboot.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="log-activity">
+        <div class="log-activity__box">
+          <h2 class="log-activity__title">Log Activity</h2>
+          <p class="log-activity__description">
+            Please fill in the form to log an activity.
+          </p>
+
+          <p class="log-activity__error" id="log-activity__error"></p>
+          <form class="log-activity__form" onsubmit="addLog(event)">
+            <div class="form-group">
+              <label for="activity"
+                >Activity:<span class="required">*</span></label
+              >
+              <input
+                class="form-input"
+                type="text"
+                id="activity"
+                name="activity"
+                placeholder="eg. Drive to work"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="category"
+                >Category:<span class="required">*</span></label
+              >
+              <select class="form-select" id="category" required>
+                <option value="travel">Travel</option>
+                <option value="food">Food</option>
+                <option value="energy">Energy</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity"
+                >Quantity:<span class="required">*</span></label
+              >
+              <input
+                min="1"
+                class="form-input"
+                type="number"
+                id="quantity"
+                name="quantity"
+                placeholder="eg. 20"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="quantityUnit"
+                >Quantity Unit:<span class="required">*</span></label
+              >
+              <input
+                class="form-input"
+                type="text"
+                id="quantityUnit"
+                name="quantityUnit"
+                placeholder="eg. km"
+                required
+              />
+            </div>
+
+            <div class="log-activity__actions">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="window.location.href = '/app/activities.html'"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/logs.js"></script>
+  </body>
+</html>

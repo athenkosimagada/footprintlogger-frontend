@@ -15,7 +15,8 @@
 /* Basic reset for the body element */
 body {
   margin: 0;
-  font-family: "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+  font-family: "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial,
+    sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -36,7 +37,12 @@ hr {
 }
 
 /* Headings styling */
-h6, h5, h4, h3, h2, h1 {
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -92,7 +98,8 @@ address {
 /* Lists styling */
 ol,
 ul {
-  padding-left: 2rem;
+  list-style: none;
+  padding-left: 0;
 }
 
 ol,
@@ -160,12 +167,8 @@ sup {
 
 /* Anchor link styling */
 a {
-  color: #0d6efd;
+  color: unset;
   text-decoration: underline;
-}
-
-a:hover {
-  color: #0a58ca;
 }
 
 a:not([href]):not([class]),
@@ -179,7 +182,8 @@ pre,
 code,
 kbd,
 samp {
-  font-family: "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+  font-family: "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial,
+    sans-serif;
   font-size: 1em;
 }
 
@@ -293,7 +297,7 @@ select {
   text-transform: none;
 }
 
-[role=button] {
+[role="button"] {
   cursor: pointer;
 }
 
@@ -305,21 +309,23 @@ select:disabled {
   opacity: 1;
 }
 
-[list]:not([type=date]):not([type=datetime-local]):not([type=month]):not([type=week]):not([type=time])::-webkit-calendar-picker-indicator {
+[list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not(
+    [type="week"]
+  ):not([type="time"])::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
 button:not(:disabled),
-[type=button]:not(:disabled),
-[type=reset]:not(:disabled),
-[type=submit]:not(:disabled) {
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
   cursor: pointer;
 }
 
@@ -375,7 +381,7 @@ legend + * {
   height: auto;
 }
 
-[type=search] {
+[type="search"] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
 }
