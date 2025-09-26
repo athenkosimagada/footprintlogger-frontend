@@ -33,10 +33,10 @@ async function addLog(event) {
   }
 }
 
-async function getActivities() {
+async function getActivities(filterCategory = "all") {
   const activitiesList = document.getElementById("activities__list");
   try {
-    const response = await apiRequest("/logs");
+    const response = await apiRequest("/logs?category=" + filterCategory);
 
     activitiesList.innerHTML = "";
 
@@ -69,7 +69,17 @@ function createLogItem(activity, index) {
 document.addEventListener("DOMContentLoaded", async () => {
   const currentPath = window.location.pathname;
 
-  if (currentPath === "/app/activities.html") {
-    await getActivities();
+  if (currentPath !== "/app/activities.html") {
+    return;
   }
+
+  await getActivities();
+
+  const filterCategory = document.getElementById("category-filter").value;
+
+  document
+    .getElementById("category-filter")
+    .addEventListener("change", async () => {
+      await getActivities(document.getElementById("category-filter").value);
+    });
 });

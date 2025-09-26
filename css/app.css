@@ -641,6 +641,10 @@ button {
   gap: 0.5rem;
 }
 
+.stats__item.highlight {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
 .stats__item span {
   font-family: var(--font-family-heading);
   font-size: 1rem;
@@ -653,6 +657,19 @@ button {
   font-size: 1rem;
   font-weight: var(--font-weight-bold);
   color: var(--clr-heading);
+}
+
+/**
+ * Tip Styles
+ * This section contains styles for the tip page.
+ */
+
+.tip {
+  margin-top: 2rem;
+  background-color: var(--clr-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
 /**
@@ -688,4 +705,9 @@ button {
 
 .leaderboard tbody tr:nth-child(odd) {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.leaderboard .current-user {
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
 }

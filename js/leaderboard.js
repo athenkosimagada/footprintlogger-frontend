@@ -20,6 +20,11 @@ async function getLeaderboard() {
 
 function createLeaderboardItem(user, index) {
   const leaderboardItem = document.createElement("tr");
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  if (currentUser.userId === user.userId) {
+    leaderboardItem.classList.add("current-user");
+  }
+
   leaderboardItem.innerHTML = `
         <td>${index + 1}</td>
         <td>${user.firstName} ${user.lastName}</td>

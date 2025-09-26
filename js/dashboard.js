@@ -1,16 +1,22 @@
 async function loadDashboard() {
-  activateSidebarLink();
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  document.querySelector(
-    ".content__header h4"
-  ).textContent = `Hello ${user.firstName} 👋,`;
-
   try {
+    activateSidebarLink();
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    document.querySelector(
+      ".content__header h4"
+    ).textContent = `Hello ${user.firstName} 👋,`;
+
+    const currentPath = window.location.pathname;
+    if (currentPath !== "/app/dashboard.html") {
+      return;
+    }
+
     const streak = await apiRequest("/stats/streak");
     // const weekly = await apiRequest("/stats/weekly-summary");
     const communityAverage = await apiRequest("/stats/community-average");
     const yourStats = await getYourStats();
+    const tip = await apiRequest("/insights/latest-tip");
 
     document.getElementById("content__header--streak-text").textContent =
       streak.currentStreak;
@@ -22,6 +28,9 @@ async function loadDashboard() {
     document.getElementById("stats__item--community").textContent =
       communityAverage.averageCarbonFootprint.toFixed(2) || 0;
 
+    document.getElementById("tip__title").textContent = tip.tip;
+
+    getHighestCategoryEmission();
     generateGraph();
   } catch (error) {
     console.error("Error loading dashboard data:", error);
@@ -95,4 +104,27 @@ async function generateGraph() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", loadDashboard);
+async function getHighestCategoryEmission() {
+  const logs = await apiRequest("/logs");
+
+  const categoryTotals = {};
+
+  logs.forEach((log) => {
+    const cat = log.category;
+    categoryTotals[cat] = (categoryTotals[cat] || 0) + log.carbonFootprint;
+  });
+
+  const highestCategory = Object.keys(categoryTotals).reduce((a, b) => {
+    return categoryTotals[a] > categoryTotals[b] ? a : b;
+  });
+
+  document.getElementById(
+    "stats__item--highest"
+  ).textContent = `${highestCategory}: ${
+    categoryTotals[highestCategory].toFixed(2) || 0
+  }`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadDashboard();
+});
