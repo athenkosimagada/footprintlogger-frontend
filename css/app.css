@@ -267,7 +267,7 @@ button {
 
 .page {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .sidebar {
@@ -703,11 +703,82 @@ button {
   text-align: left;
 }
 
-.leaderboard tbody tr:nth-child(odd) {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 .leaderboard .current-user {
   background-color: var(--clr-primary);
   color: var(--clr-white);
+}
+
+/**
+ * Weekly Goal Styles
+ * This section contains styles for the weekly goal page.
+ */
+
+.weekly-goal {
+  background-color: var(--clr-white);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weekly-goal h5 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--clr-heading);
+  margin: 0;
+}
+
+.weekly-goal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weekly-goal__progress {
+  width: 100%;
+  background: var(--clr-progress-bar-bg, #f1f1f1);
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.weekly-goal__progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--clr-progress-bar-fill, #007bff);
+  width: 0%;
+}
+
+.weekly-goal__progress--hidden,
+.weekly-goal__form--hidden {
+  display: none;
+}
+
+#current-weekly-goal {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--clr-text);
+}
+
+#weekly-goal-message {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--clr-success);
+  min-height: 1.2rem;
+}
+
+#weekly-goal-error {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--clr-error);
+  min-height: 1.2rem;
 }

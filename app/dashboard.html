@@ -186,6 +186,74 @@
           <section class="tip">
             <h5 class="tip__title" id="tip__title">Loading...</h5>
           </section>
+          <section class="weekly-goal">
+            <h5 class="weekly-goal__title">Weekly Goal</h5>
+
+            <div class="weekly-goal__status">
+              <p class="weekly-goal__text">
+                Your current weekly goal:
+                <span class="weekly-goal__value" id="goal-value"
+                  >Loading...</span
+                >
+              </p>
+
+              <div
+                class="weekly-goal__progress weekly-goal__progress--hidden"
+                id="weekly-progress-bar"
+              >
+                <div
+                  class="weekly-goal__progress-fill"
+                  id="progress-bar-fill"
+                ></div>
+              </div>
+            </div>
+
+            <button
+              class="weekly-goal__toggle-btn btn-secondary"
+              id="toggle-goal-form"
+            >
+              Set / Update Goal
+            </button>
+
+            <form
+              class="weekly-goal__form weekly-goal__form--hidden"
+              onsubmit="setWeeklyGoal(event)"
+            >
+              <div class="form-group">
+                <label for="targetReduction">Target Reduction</label>
+                <input
+                  min="0"
+                  step="0.01"
+                  class="form-input"
+                  type="number"
+                  id="targetReduction"
+                  name="targetReduction"
+                  placeholder="e.g. 10 kg CO2"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select
+                  class="form-select"
+                  id="category"
+                  name="category"
+                  required
+                >
+                  <option value="">Select category</option>
+                  <option value="travel">Travel</option>
+                  <option value="food">Food</option>
+                  <option value="energy">Energy</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Set Goal</button>
+              <p id="weekly-goal-message"></p>
+              <p id="weekly-goal-error"></p>
+            </form>
+          </section>
           <section class="graph">
             <canvas id="graph"></canvas>
           </section>
@@ -193,6 +261,7 @@
       </main>
     </div>
 
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/api.js"></script>
     <script src="/js/dashboard.js"></script>
