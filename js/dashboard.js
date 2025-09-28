@@ -1,4 +1,4 @@
-const socket = io("http://localhost:5000");
+const socket = io("https://footprintlogger-backend.onrender.com");
 
 socket.on("weeklyGoalUpdate", (goal) => {
   updateWeeklyGoal(goal);
